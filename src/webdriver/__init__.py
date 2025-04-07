@@ -4,7 +4,6 @@
 #! .pyenv/bin/python3
 
 """
-
 .. module:: src.webdriver 
 	:platform: Windows, Unix
 	:synopsis:
