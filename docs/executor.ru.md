@@ -74,7 +74,7 @@
 - **`evaluate_locator`**:
   ```mermaid
   graph TD
-  Start[Начало] --> CheckIfAttributeIsList[Проверка, является ли атрибут списком]
+  Start[Начало] --> CheckIfAttributeIsList{Проверка, является ли атрибут списком}
   CheckIfAttributeIsList -->|Да| IterateOverAttributes[Итерация по каждому атрибуту в списке]
   IterateOverAttributes --> CallEvaluateForEachAttribute[Вызов _evaluate для каждого атрибута]
   CallEvaluateForEachAttribute --> ReturnGatheredResults[Вернуть собранные результаты из asyncio.gather]
@@ -87,19 +87,19 @@
 - **`get_attribute_by_locator`**:
   ```mermaid
   graph TD
-  Start[Начало] --> CheckIfLocatorIsSimpleNamespaceOrDict[Проверка, является ли локатор SimpleNamespace или dict]
+  Start[Начало] --> CheckIfLocatorIsSimpleNamespaceOrDict{Проверка, является ли локатор SimpleNamespace или dict}
   CheckIfLocatorIsSimpleNamespaceOrDict -->|Да| ConvertLocatorToSimpleNamespaceIfNeeded[Преобразовать локатор в SimpleNamespace, если необходимо]
   ConvertLocatorToSimpleNamespaceIfNeeded --> CallGetWebElementByLocator[Вызов get_webelement_by_locator]
-  CallGetWebElementByLocator --> CheckIfWebElementIsFound[Проверка, найден ли web_element]
+  CallGetWebElementByLocator --> CheckIfWebElementIsFound{Проверка, найден ли web_element}
   CheckIfWebElementIsFound -->|Нет| LogDebugMessageAndReturn[Залогировать сообщение отладки и вернуть]
-  CheckIfWebElementIsFound -->|Да| CheckIfAttributeIsDictionaryLikeString[Проверка, является ли locator.attribute строкой, похожей на словарь]
+  CheckIfWebElementIsFound -->|Да| CheckIfAttributeIsDictionaryLikeString{Проверка, является ли locator.attribute строкой, похожей на словарь}
   CheckIfAttributeIsDictionaryLikeString -->|Да| ParseAttributeStringToDict[Разбор строки locator.attribute в словарь]
-  ParseAttributeStringToDict --> CheckIfWebElementIsList[Проверка, является ли web_element списком]
+  ParseAttributeStringToDict --> CheckIfWebElementIsList{Проверка, является ли web_element списком}
   CheckIfWebElementIsList -->|Да| RetrieveAttributesForEachElementInList[Получение атрибутов для каждого элемента в списке]
   RetrieveAttributesForEachElementInList --> ReturnListOfAttributes[Вернуть список атрибутов]
   CheckIfWebElementIsList -->|Нет| RetrieveAttributesForSingleWebElement[Получение атрибутов для одного web_element]
   RetrieveAttributesForSingleWebElement --> ReturnListOfAttributes
-  CheckIfAttributeIsDictionaryLikeString -->|Нет| CheckIfWebElementIsListAgain[Проверка, является ли web_element списком]
+  CheckIfAttributeIsDictionaryLikeString -->|Нет| CheckIfWebElementIsListAgain{Проверка, является ли web_element списком}
   CheckIfWebElementIsListAgain -->|Да| RetrieveAttributesForEachElementInListAgain[Получение атрибутов для каждого элемента в списке]
   RetrieveAttributesForEachElementInListAgain --> ReturnListOfAttributesOrSingleAttribute[Вернуть список атрибутов или один атрибут]
   CheckIfWebElementIsListAgain -->|Нет| RetrieveAttributeForSingleWebElementAgain[Получение атрибута для одного web_element]
