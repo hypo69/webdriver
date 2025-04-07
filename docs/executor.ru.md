@@ -41,10 +41,12 @@
 
 ### Диаграммы потока
 
-### Диаграммы потока
-
 
 - **`execute_locator`**:
+
+---
+
+
   ```mermaid
   graph TD
   Start[Начало]  --> IsSimpleNamespace{Является ли локатор SimpleNamespace?}
@@ -96,12 +98,12 @@
   CheckIfAttributeIsDictionaryLikeString -->|Да| ParseAttributeStringToDict[Разбор строки locator.attribute в словарь]
   ParseAttributeStringToDict --> CheckIfWebElementIsList{Проверка, является ли web_element списком}
   CheckIfWebElementIsList -->|Да| RetrieveAttributesForEachElementInList[Получение атрибутов для каждого элемента в списке]
-  RetrieveAttributesForEachElementInList --> ReturnListOfAttributes[Вернуть список атрибутов]
+  RetrieveAttributesForEachElementInList --> ReturnListOfAttributes[Вернуть один/список атрибутов]
   CheckIfWebElementIsList -->|Нет| RetrieveAttributesForSingleWebElement[Получение атрибутов для одного web_element]
   RetrieveAttributesForSingleWebElement --> ReturnListOfAttributes
   CheckIfAttributeIsDictionaryLikeString -->|Нет| CheckIfWebElementIsListAgain{Проверка, является ли web_element списком}
   CheckIfWebElementIsListAgain -->|Да| RetrieveAttributesForEachElementInListAgain[Получение атрибутов для каждого элемента в списке]
-  RetrieveAttributesForEachElementInListAgain --> ReturnListOfAttributesOrSingleAttribute[Вернуть список атрибутов или один атрибут]
+  RetrieveAttributesForEachElementInListAgain --> ReturnListOfAttributesOrSingleAttribute[Вернуть один / список атрибутов]
   CheckIfWebElementIsListAgain -->|Нет| RetrieveAttributeForSingleWebElementAgain[Получение атрибута для одного web_element]
   RetrieveAttributeForSingleWebElementAgain --> ReturnListOfAttributesOrSingleAttribute
   ReturnListOfAttributesOrSingleAttribute --> End[Конец]
