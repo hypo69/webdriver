@@ -19,5 +19,5 @@
     "Connection": "keep-alive"
   },
   "proxy_enabled": false,
-  "window_mode": null
+  "window_mode": "normal"
 }

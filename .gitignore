@@ -174,13 +174,13 @@ profiles/
 
 log/
 tmp/
-bin/
+#bin/
 export/
 data/
 cookies/
 
-*.exe
-*.zip
+#*.exe
+#*.zip
 
 
 #Dev 

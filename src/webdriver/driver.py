@@ -1,5 +1,3 @@
-### **Улучшенный код**
-
 ## \file /src/webdriver/driver.py
 # -*- coding: utf-8 -*-
 #! .pyenv/bin/python3
@@ -31,12 +29,15 @@ import header
 from src import gs
 
 from src.logger.logger import logger
-from src.logger.exceptions import ExecuteLocatorException, WebDriverException
+try:
+    from src.logger.exceptions import ExecuteLocatorException, WebDriverException
+except Exception as ex:
+    logger.debug('Ошибка загрузки модуля. Проверь debug',ex,None)
 
 
 class Driver:
     """
-    Класс обеспечивает удобный интерфейс для работы с различными драйверами, такими как Chrome, Firefox и Edge.
+    Класс обеспечивает интерфейс работы с различными драйверами, такими как Chrome, Firefox и Edge, а также с playwright
 
     Attributes:
         driver (selenium.webdriver): Экземпляр Selenium WebDriver.

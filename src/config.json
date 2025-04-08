@@ -1,0 +1,15 @@
+{
+  "host": "127.0.0.1",
+  "git": "hypo",
+  "git_user": "hypo69",
+  "timestamp_format": "%y%m%d%H%M%S%f",
+  "path": {
+    "external_storage": "E:\\hypo69\\data\\",
+    "google_drive": "G:\\hypo69\\data\\",
+    "log": "E:\\hypo69\\data\\log",
+    "tmp": "E:\\hypo69\\data\\tmp",
+    "src": "/src",
+    "root": ".",
+    "endpoints": "."
+  }
+}

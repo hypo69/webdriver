@@ -4,7 +4,7 @@
 
 """
 Модуль `src.webdriver`
-=========================S
+=========================
 Модуль содержит классы и функции для работы с различными веб-драйверами.
 Определены драйверы для Chrome, Firefox, Edge и других браузеров.
 ## Классы
@@ -18,9 +18,9 @@
 
         
 
-# from .driver import Driver
+from .driver import Driver
 # from .chrome import Chrome
-# from .firefox import Firefox
+from .firefox import Firefox
 # from .edge import Edge
 # from .bs import BS
 # from .playwright import Playwrid

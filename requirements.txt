@@ -1,0 +1,13 @@
+jupyter 
+selenium 
+pandas 
+json-repair 
+reportlab 
+A4 
+fake-useragent 
+aiofiles 
+aiohttp 
+beautifulsoup4 
+lxml 
+Pillow 
+pydantic
