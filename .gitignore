@@ -178,7 +178,7 @@ tmp/
 export/
 data/
 cookies/
-
+*.bkp
 #*.exe
 #*.zip
 
