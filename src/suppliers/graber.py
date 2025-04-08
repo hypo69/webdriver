@@ -3,10 +3,6 @@
 #! .pyenv/bin/python3
 
 """
-```rst
-.. module:: src.suppliers 
-```   
-
  Модуль грабера. Собирает информацию с вестраницы товара
  =========================================================
  Базовый класс сбора данных со старницы HTML поставщиков.
@@ -32,7 +28,9 @@ class G(Graber):
         self.fields.name = <Ваша реализация>
         )
     ```
-             
+```rst
+.. module:: src.suppliers 
+```                
 """
 
 
@@ -56,7 +54,7 @@ from src.endpoints.prestashop.product_fields import ProductFields
 
 from src.utils.jjson import j_loads, j_loads_ns, j_dumps
 from src.utils.image import save_image, save_image_async, save_image_from_url_async
-
+from src.utils.file import read_text_file
 from src.utils.string.normalizer import( normalize_string, 
                                         normalize_int, 
                                         normalize_float, 
@@ -175,22 +173,17 @@ class Graber:
         await self.error(field_name)
         return default
 
-    def grab_page(self, url:Optional[str] = '', *args, **kwards) -> ProductFields:
-        """ Запускает сбор данных со страниц в синхронном режиме.
-        Если `url` не передан - используется текущий URL в драйвере.
-        """
-        if url:
-            self.driver.get(url)
+    def grab_page(self, *args, **kwards) -> ProductFields:
         return asyncio.run(self.grab_page_async(*args, **kwards))
 
-    async def grab_page_async(self,  url:Optional[str] = '', *args, **kwards) -> ProductFields:
-        """Асинхронная функция для сбора полей продукта.
-        Если `url` не передан - используется текущий URL в драйвере."""
-        if url:
-            await self.driver.get(url)
-
+    async def grab_page_async(self, *args, **kwards) -> ProductFields:
+        """Асинхронная функция для сбора полей продукта."""
         async def fetch_all_data(*args, **kwards):
             # Динамическое вызовы функций для каждого поля из args
+            # if not args: # по какой то причини не были переданы имена полей для сбора информации
+            #     args:list = read_text_file(__root__ / 'src' / 'endpoints' / 'prestashop' / 'product_fields' / 'fields_list.txt', as_list = True)
+            if not args: # по какой то причини не были переданы имена полей для сбора информации
+                args:list = ['id_product', 'name', 'description_short', 'description', 'specification', 'local_image_path']
             for filed_name in args:
                 function = getattr(self, filed_name, None)
                 if function:
@@ -2147,7 +2140,7 @@ class Graber:
             self.fields.local_image_path = value
             return True
 
-        img_path:str = Path(gs.path.tmp / f'{self.fields.id_supplier}_{self.fields.id_product}.png')
+        img_path:str = str(Path(gs.path.tmp, f'{self.fields.id_supplier}_{self.fields.id_product}.png'))
 
         self.fields.local_image_path = img_path  # <- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DEBUG
 
