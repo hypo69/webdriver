@@ -16,14 +16,13 @@ Root of the project.
 
 
 
-USE_ENV:bool = False
-from .gs import gs
+USE_ENV:bool = True
 
-# if USE_ENV:
-# 	from .gs import gs
+if USE_ENV:
+	from .gs import gs
 # else:
 # 	from .credentials import gs
 
-# from .check_release import check_latest_release
-# if check_latest_release(gs.git, gs.git_user):
-#             ...  # Логика что делать когда есть новая версия hypo69 на github 
+from .check_release import check_latest_release
+if check_latest_release(gs.git, gs.git_user):
+            ...  # Логика что делать когда есть новая версия hypo69 на github 

@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 #! .pyenv/bin/python3
 """
+Модуль для работы с полями продукта в PrestaShop.
+==================================================
+
 .. module:: endpoints.prestashop.product_fields.product_fields
 	:platform: Windows, Unix
 	:synopsis: Расписано каждое поле товара для таблиц престашоп"""
